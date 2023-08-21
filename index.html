@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>GrapesJS Preset Webpage</title>
+  <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/grapesjs"></script>
+
+  <link rel="stylesheet" href="css/lib/bootstrap.min.css" />
+  <script src="js/lib/bootstrap.min.js"></script>
+  <script src="js/lib/popper.min.js"></script>
+  <style>
+    body,
+    html {
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow: scroll;
+      overflow-x: hidden;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .sidenav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 15%;
+      height: 100vh;
+      overflow: scroll;
+      overflow-x: hidden;
+      -ms-overflow-style: none;
+      stroke-width: none;
+      background-color: rgba(255, 255, 255, 0.95);
+      transition: 0.5s;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.3);
+
+      .logo {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .pages {
+        height: 100px;
+        overflow: scroll;
+        overflow-x: hidden;
+      }
+
+      .nav {
+        justify-content: space-between;
+      }
+    }
+
+    .main-content {
+      position: relative;
+      width: 85%;
+      left: 15%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar" class="sidenav d-flex flex-column overflow scroll">
+    <nav class="navbar navbar-light">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h3 logo">Code Dexterous</span>
+      </div>
+    </nav>
+    <div class="my-2 d-flex flex-column">
+      <button type="button" class="btn btn-outline-secondary btn-sm mb-2 mx-2">
+        <i class="bi bi-file-earmark-plus"></i> Add Page
+      </button>
+      <ul class="list-group pages">
+        <li class="list-group-item d-flex justify-content-between">
+          Home
+          <div class="m-2">
+            <i class="bi bi-pencil-fill"></i>
+            <i class="bi bi-trash"></i>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          About
+          <div class="m-2">
+            <i class="bi bi-pencil-fill"></i>
+            <i class="bi bi-trash"></i>
+          </div>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          Contact Us
+          <div class="m-2">
+            <i class="bi bi-pencil-fill"></i>
+            <i class="bi bi-trash"></i>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-content">
+    <nav class="navbar navbar-light">
+      <div class="container-fluid"></div>
+    </nav>
+  </div>
+
+  <div id="gjs" style="height:0px; overflow:hidden">
+    <div class="panel">
+      <h1 class="welcome">Welcome to</h1>
+      <div class="big-title">
+        <svg class="logo" viewBox="0 0 100 100">
+          <path
+            d="M40 5l-12.9 7.4 -12.9 7.4c-1.4 0.8-2.7 2.3-3.7 3.9 -0.9 1.6-1.5 3.5-1.5 5.1v14.9 14.9c0 1.7 0.6 3.5 1.5 5.1 0.9 1.6 2.2 3.1 3.7 3.9l12.9 7.4 12.9 7.4c1.4 0.8 3.3 1.2 5.2 1.2 1.9 0 3.8-0.4 5.2-1.2l12.9-7.4 12.9-7.4c1.4-0.8 2.7-2.2 3.7-3.9 0.9-1.6 1.5-3.5 1.5-5.1v-14.9 -12.7c0-4.6-3.8-6-6.8-4.2l-28 16.2" />
+        </svg>
+        <span>GrapesJS</span>
+      </div>
+      <div class="description">
+        This is a bhai content from index.html. For the development, you shouldn't edit this file, instead you can
+        copy and rename it to _index.html, on next server start the new file will be served, and it will be ignored by
+        git.
+      </div>
+    </div>
+    <style>
+      .panel {
+        width: 90%;
+        max-width: 700px;
+        border-radius: 3px;
+        padding: 30px 20px;
+        margin: 150px auto 0px;
+        background-color: #d983a6;
+        box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.25);
+        color: rgba(255, 255, 255, 0.75);
+        font: caption;
+        font-weight: 100;
+      }
+
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+
+      .app-wrap {
+        height: 100%;
+        width: 100%;
+        display: flex;
+      }
+
+      .editor-wrap {
+        widtH: 100%;
+        height: 100%;
+      }
+
+      .pages-wrp,
+      .pages {
+        display: flex;
+        flex-direction: column
+      }
+
+      .pages-wrp {
+        background: #333;
+        padding: 5px;
+      }
+
+      .add-page {
+        background: #444444;
+        color: white;
+        padding: 5px;
+        border-radius: 2px;
+        cursor: pointer;
+        white-space: nowrap;
+        margin-bottom: 10px;
+      }
+    </style>
+  </div>
+
+
+  <script type="text/javascript">
+    window.onload = () => {
+      window.editor = grapesjs.init({
+        plugins: ['grapesjs-preset-webpage'],
+        pluginsOpts: {
+          'grapesjs-preset-webpage': {}
+        },
+
+        height: '100%',
+        showOffsets: true,
+        noticeOnUnload: false,
+        storageManager: false,
+        container: '#gjs',
+        fromElement: true,
+        pageManager: {
+          pages: [
+            {
+              id: 'my-first-page',
+              styles: '.my-page1-el { color: red }',
+              component: '<div class="my-page1-el">Page 1</div>',
+            },
+            {
+              id: 'my-second-page',
+              styles: '.my-page2-el{color:blue}',
+              component: '<div class="my-page2-el">Page 2</div>',
+            },
+          ]
+        },
+
+      });
+    }
+  </script>
+</body>
+
+</html>
