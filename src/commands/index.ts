@@ -27,4 +27,12 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
     stop: () => { },
   });
   Commands.add(cmdClear, (e: Editor) => confirm(txtConfirm) && e.runCommand('core:canvas-clear'));
+
+  const commands = editor.Commands;
+
+  commands.add('open-pd', {
+    run(editor) {
+      alert('This is my command');
+    },
+  });
 }

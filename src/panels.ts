@@ -149,44 +149,7 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           //this will be our button for displaying the pages and selecting them
           id: opd, //open page display button
           // command: opd, //gives the button its functionality? need to program this command
-          command(Editor: Editor) {
-            //here we need to add functionality for this button to do what it is supposed to, no need
-            // to make a custom command for this butto
-            // const pageManager = editor.Pages;
-            // const panelManager = editor.Panels;
-
-            // const pages = pageManager.getAll(); //gets pages made
-            // const pagesList = document.getElementById("pages-list");
-
-
-            // pages.forEach((page) => {
-            //   const pageText = page.getId();
-            //   const pageItem = document.createElement("li");
-            //   const onClick = () => pageManager.select(pageText);
-            //   pageItem.addEventListener("click", onClick);
-            //   pageItem.innerHTML = pageText;
-            //   pagesList.appendChild(pageItem);
-
-
-            //   //now we need to add a button which can add pages her
-            // });
-
-            // const AddPagesButton = document.getElementById("pages_add");
-            // AddPagesButton.addEventListener("click", addPageFunc)
-
-            // function addPageFunc() {
-            //   const pageName = prompt("Please enter the desired name for the page")
-            //   const newPage = pageManager.add({ id: `${pageName}` });
-            //   const newPageText = newPage.getId();
-            //   const newPageItem = document.createElement("li");
-            //   const onClick = () => pageManager.select(newPageText);
-            //   newPageItem.addEventListener("click", onClick);
-            //   newPageItem.innerHTML = newPageText;
-            //   pagesList.appendChild(newPageItem);
-            //   pageManager.select(newPageText);
-
-            // }
-          },
+          command: opd,
 
           label: `<svg ${iconStyle} viewBox="0 0 24 24">
           <path fill="currentColor" d="M12,16L19.36,10.27L21,9L12,2L3,9L4.63,10.27M12,18.54L4.62,12.81L3,14.07L12,21.07L21,14.07L19.37,12.8L12,18.54Z" />
