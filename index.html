@@ -195,14 +195,20 @@
 
       function addPageFunc() {
         const pageName = prompt("Please enter the desired name for the page")
-        const newPage = pageManager.add({ id: `${pageName}` });
-        const newPageText = newPage.getId();
-        const newPageItem = document.createElement("li");
-        const onClick = () => pageManager.select(newPageText);
-        newPageItem.addEventListener("click", onClick);
-        newPageItem.innerHTML = newPageText;
-        pagesList.appendChild(newPageItem);
-        pageManager.select(newPageText);
+        if (pageName !== "" && pageName !== null) {
+          const newPage = pageManager.add({ id: `${pageName}` });
+          const newPageText = newPage.getId();
+          const newPageItem = document.createElement("li");
+          const onClick = () => pageManager.select(newPageText);
+          newPageItem.addEventListener("click", onClick);
+          newPageItem.innerHTML = newPageText;
+          pagesList.appendChild(newPageItem);
+          pageManager.select(newPageText);
+        }
+
+        else {
+
+        }
 
       }
 

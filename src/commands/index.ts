@@ -30,9 +30,27 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
 
   const commands = editor.Commands;
 
-  commands.add('open-pd', {
-    run(editor) {
-      alert('This is my command');
-    },
-  });
+  // commands.add('open-pd', {
+  //   run(editor) {
+  //     const pageManager = editor.Pages;
+  //     const panelManager = editor.Panels;
+
+  //     const pages = pageManager.getAll(); //gets pages made
+  //     const pagesList = document.getElementById("pages-list");
+
+
+  //     pages.forEach((page) => {
+  //       let pageText: any
+  //       pageText = page.getId();
+  //       const pageItem = document.createElement("li");
+  //       const onClick = () => pageManager.select(pageText);
+  //       pageItem.addEventListener("click", onClick);
+  //       pageItem.innerHTML = pageText;
+  //       pagesList.appendChild(pageItem);
+
+  //       //now we need to add a button which can add pages her
+  //     });
+
+  //   },
+  // });
 }
