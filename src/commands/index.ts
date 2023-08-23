@@ -5,8 +5,11 @@ import {
   cmdDeviceDesktop,
   cmdDeviceMobile,
   cmdDeviceTablet,
+  pageShit,
 } from './../consts';
 import openImport from './openImport';
+
+import { CommandObject } from 'grapesjs';
 
 export default (editor: Editor, config: RequiredPluginOptions) => {
   const { Commands } = editor;
@@ -30,27 +33,45 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
 
   const commands = editor.Commands;
 
-  // commands.add('open-pd', {
-  //   run(editor) {
-  //     const pageManager = editor.Pages;
-  //     const panelManager = editor.Panels;
+  commands.add('open-pd', {
+    run(editor) {
 
-  //     const pages = pageManager.getAll(); //gets pages made
-  //     const pagesList = document.getElementById("pages-list");
+      const pageManager = editor.Pages;
+      const panelManager = editor.Panels;
+      const pages = pageManager.getAll();
+      const pagesList = document.getElementById("pages-list");
 
+      const lm = editor.LayerManager;
+      const pn = editor.Panels;
+      const lmConfig = lm.getConfig();
 
-  //     pages.forEach((page) => {
-  //       let pageText: any
-  //       pageText = page.getId();
-  //       const pageItem = document.createElement("li");
-  //       const onClick = () => pageManager.select(pageText);
-  //       pageItem.addEventListener("click", onClick);
-  //       pageItem.innerHTML = pageText;
-  //       pagesList.appendChild(pageItem);
+      if (lmConfig.appendTo) return;
 
-  //       //now we need to add a button which can add pages her
-  //     });
+      if (!this.layers) {
+        const id = 'views-container';
+        const layers = pagesList;
+        // @ts-ignore
+        const panels = pn.getPanel(id) || pn.addPanel({ id });
 
-  //   },
-  // });
-}
+        if (lmConfig.custom) {
+          lm.__trgCustom({ container: layers });
+        } else {
+          if (layers) { layers.appendChild(lm.render()); }
+        }
+
+        panels.set('appendContent', layers).trigger('change:appendContent');
+        this.layers = layers;
+      }
+
+      this.layers.style.display = 'block';
+    },
+
+    stop() {
+      const { layers } = this;
+      layers && (layers.style.display = 'none');
+    },
+  } as CommandObject<{}, { [k: string]: any }>
+    ,
+
+  )
+};
