@@ -5,7 +5,7 @@ import {
   cmdDeviceDesktop,
   cmdDeviceMobile,
   cmdDeviceTablet,
-  pageShit,
+  paged,
 } from "./../consts";
 import openImport from "./openImport";
 
