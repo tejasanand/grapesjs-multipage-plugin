@@ -19,15 +19,15 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
 
   Commands.add(cmdDeviceDesktop, {
     run: (ed) => ed.setDevice("Desktop"),
-    stop: () => {},
+    stop: () => { },
   });
   Commands.add(cmdDeviceTablet, {
     run: (ed) => ed.setDevice("Tablet"),
-    stop: () => {},
+    stop: () => { },
   });
   Commands.add(cmdDeviceMobile, {
     run: (ed) => ed.setDevice("Mobile portrait"),
-    stop: () => {},
+    stop: () => { },
   });
   Commands.add(
     cmdClear,
@@ -38,9 +38,38 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
 
   commands.add("open-pd", {
     run(editor) {
+      const pagesList = document.createElement("li");
+
+      const button = document.createElement("button");
+      button.innerHTML = "Add Page";
+      button.setAttribute("id", "pages_add");
+      button.classList.add("pages_add");
+      button.style.marginTop = "10px";
+      pagesList.appendChild(button);
+
+      button.addEventListener("click", pageadd);
+
+      function pageadd() {
+        const pageName = prompt("Please enter the desired name for the page");
+        if (pageName !== "" && pageName !== null) {
+          const newPage = pageManager.add({ id: `${pageName}` });
+          if (newPage) {
+            const newPageText = newPage.getId();
+            const newPageItem = document.createElement("li");
+            if (typeof newPageText !== "string") return;
+            const onClick = () => pageManager.select(newPageText);
+            newPageItem.addEventListener("click", onClick);
+            newPageItem.innerHTML = newPageText;
+            pagesList.appendChild(newPageItem);
+            pageManager.select(newPageText);
+          } else {
+          }
+
+        }
+      }
       const pageManager = editor.Pages;
       const pages = pageManager.getAll();
-      const pagesList = document.createElement("li");
+
       pagesList.setAttribute("id", "pages-list");
 
       pages.forEach((page) => {
@@ -54,12 +83,6 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
         //now we need to add a button which can add pages her
       });
 
-      const button = document.createElement("button");
-      button.innerHTML = "Add Page";
-      button.setAttribute("id", "pages_add");
-      button.classList.add("pages_add");
-      button.style.marginTop = "10px";
-      pagesList.appendChild(button);
 
       const lm = editor.LayerManager;
       const pn = editor.Panels;
