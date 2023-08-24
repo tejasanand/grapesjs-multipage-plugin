@@ -10,6 +10,8 @@ import {
 import openImport from "./openImport";
 
 import { CommandObject } from "grapesjs";
+import { EditorModelParam } from "grapesjs";
+
 
 export default (editor: Editor, config: RequiredPluginOptions) => {
   const { Commands } = editor;
@@ -35,7 +37,6 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
   );
 
   const commands = editor.Commands;
-
   commands.add("open-pd", {
     run(editor) {
       const pagesList = document.createElement("li");

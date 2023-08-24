@@ -24,6 +24,13 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
   const opd = "open-pd";
   const iconStyle = 'style="display: block; max-width:22px"';
 
+  document.addEventListener('keydown', e => {
+    if (e.key == "v" && e.ctrlKey) {
+      editor.runCommand(expt)
+
+    }
+  })
+
   config.showDevices = false;
 
   Panels.getPanels().reset([
@@ -61,6 +68,13 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
     {
       id: "options",
       buttons: [
+        // {
+        //   id: expt,
+        //   command: () => editor.runCommand(expt),
+        //   label: `<svg ${iconStyle} viewBox="0 0 24 24">
+        //       <path fill="currentColor" d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V5.58L22.42,12L16,18.41V15.58L19.59,12M1.58,12L8,5.58V8.41L4.41,12L8,15.58V18.41L1.58,12Z" />
+        //   </svg>`,
+        // },
         {
           id: swv,
           command: swv,
@@ -81,13 +95,6 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           context: ful,
           label: `<svg ${iconStyle} viewBox="0 0 24 24">
             <path fill="currentColor" d="M5,5H10V7H7V10H5V5M14,5H19V10H17V7H14V5M17,14H19V19H14V17H17V14M10,17V19H5V14H7V17H10Z" />
-        </svg>`,
-        },
-        {
-          id: expt,
-          command: () => editor.runCommand(expt),
-          label: `<svg ${iconStyle} viewBox="0 0 24 24">
-            <path fill="currentColor" d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V5.58L22.42,12L16,18.41V15.58L19.59,12M1.58,12L8,5.58V8.41L4.41,12L8,15.58V18.41L1.58,12Z" />
         </svg>`,
         },
         {
