@@ -130,3 +130,5 @@ const plugin: Plugin<PluginOptions> = (editor, opts: Partial<PluginOptions> = {}
 }
 
 export default plugin;
+
+

@@ -138,8 +138,11 @@
 
   <script type="text/javascript">
     window.onload = () => {
-      let i = 1;
       window.editor = grapesjs.init({
+        // plugins: ["customRTE"],
+        // pluginsOpts: {
+        //   "customRTE": {},
+        // },
         plugins: ["grapesjs-preset-webpage"],
         pluginsOpts: {
           "grapesjs-preset-webpage": {},
@@ -196,6 +199,7 @@
 
       //when someone clicks the button we want to add a page there
     };
+
   </script>
 </body>
 
