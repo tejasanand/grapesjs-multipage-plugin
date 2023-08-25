@@ -3,6 +3,8 @@ import blocks from './blocks';
 import commands from './commands';
 import panels from './panels';
 
+
+
 export type PluginOptions = {
   /**
    * Which blocks to add.

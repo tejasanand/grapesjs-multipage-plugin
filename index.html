@@ -210,35 +210,12 @@
 
       //to remove all blocks
 
-      // const blocks = blockManager.getAll();
+      const blocks = blockManager.getAll();
 
-      // blocks.forEach((block) => {
-      //   blockManager.remove(block);
-      // });
-
-      // blockManager.remove('quote')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      blocks.forEach((block) => {
+        blockManager.remove(block);
+        blockManager.remove('quote')
+      });
 
       const pageManager = editor.Pages;
       const panelManager = editor.Panels;

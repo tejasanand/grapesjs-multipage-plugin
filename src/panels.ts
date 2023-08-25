@@ -25,8 +25,8 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
   const iconStyle = 'style="display: block; max-width:22px"';
 
   document.addEventListener('keydown', e => {
-    if (e.key == "v" && e.ctrlKey) {
-      editor.runCommand(expt)
+    if (e.key == "i" && e.ctrlKey) {
+      editor.runCommand(cmdImport)
 
     }
   })
@@ -75,6 +75,13 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
         //       <path fill="currentColor" d="M12.89,3L14.85,3.4L11.11,21L9.15,20.6L12.89,3M19.59,12L16,8.41V5.58L22.42,12L16,18.41V15.58L19.59,12M1.58,12L8,5.58V8.41L4.41,12L8,15.58V18.41L1.58,12Z" />
         //   </svg>`,
         // },
+        // {
+        //   id: cmdImport,
+        //   command: () => editor.runCommand(cmdImport),
+        //   label: `<svg ${iconStyle} viewBox="0 0 24 24">
+        //     <path fill="currentColor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+        // </svg>`,
+        // },
         {
           id: swv,
           command: swv,
@@ -109,13 +116,6 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
           command: () => editor.runCommand("core:redo"),
           label: `<svg ${iconStyle} viewBox="0 0 24 24">
             <path fill="currentColor" d="M10.5 18H18V20H10.5C6.91 20 4 17.09 4 13.5S6.91 7 10.5 7H16.17L13.08 3.91L14.5 2.5L20 8L14.5 13.5L13.09 12.09L16.17 9H10.5C8 9 6 11 6 13.5S8 18 10.5 18Z" />
-        </svg>`,
-        },
-        {
-          id: cmdImport,
-          command: () => editor.runCommand(cmdImport),
-          label: `<svg ${iconStyle} viewBox="0 0 24 24">
-            <path fill="currentColor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
         </svg>`,
         },
         {
