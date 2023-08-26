@@ -1,0 +1,1147 @@
+styleManager : {
+  sectors: [
+    {
+      name: 'Layout',
+      open: false,
+      properties:[
+        {
+            name      : 'Width',
+            property  : 'width',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            defaults  : 'fit-content',
+            min       : 0,
+        },{
+            name      : 'Height',
+            property  : 'height',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            defaults  : 'fit-content',
+            min       : 0,
+        },{
+            name      : 'Min Width',
+            property  : 'min-width',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : 'Max Width',
+            property  : 'max-width',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            defaults  : '100%',
+            min       : 0,
+        },{
+            name      : 'Min Height',
+            property  : 'min-height',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : 'Max Height',
+            property  : 'Max-height',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : 'Ratio',
+            property  : 'aspect-ratio',
+            type      : 'composite',
+            separator : ' / ',
+            properties: [{
+                  name      : 'Width',
+                  property  : 'aspect-ratio',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'Height',
+                  property  : 'aspect-ratio',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },],
+        },{
+            name      : 'Grow',
+            property  : 'flex-grow',
+            type      : 'integer',
+            min       : 0,
+        },{
+            name      : 'Shrink',
+            property  : 'flex-shrink',
+            type      : 'integer',
+            min       : 0,
+        },{
+            name      : 'Padding',
+            property  : 'padding',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : '', /* Requires a new trait component that allows switching between all sides vs. unique paddings */
+            property  : 'padding',
+            type      : 'composite', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+            properties: [{
+                  name      : 'T',
+                  property  : 'padding-top',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'R',
+                  property  : 'padding-right',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'B',
+                  property  : 'padding-bottom',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'L',
+                  property  : 'padding-left',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },],
+        },{
+            name      : 'Margin',
+            property  : 'margin',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+        },{
+            name      : '', /* Requires a new trait component that allows switching between all sides vs. unique paddings */
+            property  : 'margin',
+            type      : 'composite', /* Should be a list that injects Size tokens from theme.css */
+            min       : 0,
+            properties: [{
+                  name      : 'T',
+                  property  : 'margin-top',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+              },{
+                  name      : 'R',
+                  property  : 'margin-right',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+              },{
+                  name      : 'B',
+                  property  : 'margin-bottom',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+              },{
+                  name      : 'L',
+                  property  : 'margin-left',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+              },],
+        },{
+            name      : 'Self Align',
+            property  : 'align-self', /* Needs logic to switch to justify-self if parent is a flex column rather than row */
+            type      : 'radio',
+            list:    [{ value : 'start', name : 'Top', }, /* Needs icons, and logic to switch them based on parent flex axis */
+                      { value : 'center', name : 'Middle', }],
+                      { value : 'end', name : 'Bottom', }], 
+                      { value : 'stretch', name : 'Stretch', }], 
+        },{
+            name      : 'Sibling Order',
+            property  : 'order',
+            type      : 'integer',
+            min       : 0,
+        },{
+            name      : 'Overlay Order',
+            property  : 'z-index',
+            type      : 'integer',
+            min       : 0,
+        },{
+            name      : 'Starting Cell',
+            property  : 'grid-row-start',
+            type      : 'integer',
+            min       : 0,
+        },{
+            name      : '', /* This input is meant to be inline with the one above */
+            property  : 'grid-column-start',
+            type      : 'integer',
+            min       : 0,
+        },{
+            name      : 'Cells Covered',
+            property  : 'grid-row-end',
+            type      : 'integer',
+            min       : 1,
+            defaults  : 1, /* Value should update to be this input + grid-row-start */
+        },{
+            name      : '', /* This input is meant to be inline with the one above */
+            property  : 'grid-column-end',
+            type      : 'integer',
+            min       : 1,
+            defaults  : 1, /* Value should update to be this input + grid-row-start */
+        },{
+            name      : 'Scroll Align',
+            property  : 'scroll-snap-align', /* Only available if parent has overflow: scroll */
+            type      : 'select',
+            list:    [{ value : 'start', name : 'Top', },
+                      { value : 'center', name : 'Middle', },
+                      { value : 'end', name : 'Bottom', }],
+        },{
+            name      : 'Scroll Margin',
+            property  : 'scroll-margin', /* Only available if parent has overflow: scroll */
+            type      : 'composite',
+            properties: [{
+                  name      : 'T',
+                  property  : 'scroll-margin-top',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'R',
+                  property  : 'scroll-margin-right',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'B',
+                  property  : 'scroll-margin-bottom',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'L',
+                  property  : 'scroll-margin-left',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },],
+        },{
+            name      : 'Visibility',
+            property  : 'visibility',
+            type      : 'select',
+            list:   [ { value : 'visible', name : 'Visible', },
+                      { value : 'hidden', name : 'Invisible', }], /* Ideal to include "display: none" if there's a way to include property+value */
+        },{
+            name      : 'Position',
+            property  : 'position',
+            type      : 'select',
+            list:    [{ value : 'relative', name : 'Relative', },
+                      { value : 'absolute', name : 'Absolute', },
+                      { value : 'fixed', name : 'Stick to Page', },
+                      { value : 'sticky', name : 'Sticky on Scroll', }],               
+        },{
+            name      : 'Top',
+            property  : 'top',
+            type      : 'integer',
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : 'Right',
+            property  : 'right',
+            type      : 'integer',
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : 'Bottom',
+            property  : 'bottom',
+            type      : 'integer',
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : 'Left',
+            property  : 'left',
+            type      : 'integer',
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+        },{
+            name      : 'Transform', /* Couldn't figure out how to include the Flip setting yet; requires property+value options in a select list */
+            property  : 'transform',
+            type      : 'composite',
+            properties: [{
+                  name      : 'Rotate',
+                  property  : 'rotate',
+                  type      : 'integer',
+                  units     : ['deg', 'turn'],
+              },{
+                  name      : 'Move X',
+                  property  : 'translateX',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+              },{
+                  name      : 'Move Y',
+                  property  : 'translateY',
+                  type      : 'integer',
+              },{
+                  name      : 'Scale Y',
+                  property  : 'scaleY',
+                  type      : 'integer',
+              },{
+                  name      : 'Skew X',
+                  property  : 'skewX',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+              },{
+                  name      : 'Skew Y',
+                  property  : 'skewY',
+                  type      : 'integer',
+                  units     : ['deg','rad'],
+              },],
+        }
+      ]
+    },{
+      name: 'Interior',
+      open: false,
+      properties:[
+        {
+            name      : 'Arrangement',
+            property  : 'display',
+            type      : 'select',
+            defaults  : 'flex',
+            list:   [ { value : 'flex', name : 'Flex', },
+                      { value : 'grid', name : 'Grid', }, /* Ideally includes row/column/reverse options as well, if we can include property+value */
+                      { value : 'table', name : 'Table', }, /* Table values don't appear in the UI; they are just here for the table block for CSS purposes  */ 
+                      { value : 'table-row', name : 'Table Row', },
+                      { value : 'table-cell', name : 'Table Cell', }],
+        },{
+            name      : 'Flow', /* Temporary until it can be consolidated with Arrangement */
+            property  : 'flex-flow',
+            type      : 'composite',
+            defaults  : 'row wrap',
+            properties:[{
+                  name      : 'Direction',
+                  property  : 'flex-direction',
+                  type      : 'select',
+                  list:   [ { value : 'row', name : 'Row', },
+                          { value : 'row-reverse', name : 'Row Reverse', },
+                          { value : 'column', name : 'Column', },
+                          { value : 'column-reverse', name : 'Column Reverse', }],
+              },{
+                  name      : 'Wrap',
+                  property  : 'flex-wrap',
+                  type      : 'radio',
+                  defaults  : 'wrap',
+                  list:   [ { value : 'wrap', name : 'Yes', },
+                            { value : 'nowrap', name : 'No', },
+                            { value : 'wrap-reverse', name : 'Reverse', }],
+        },{
+            name      : 'Alignment',
+            property  : 'justify-content', /* Should switch to align-items for a column parent */
+            type      : 'radio',
+            list:   [ { value : 'start', name : 'Start', },
+                      { value : 'center', name : 'Center', },
+                      { value : 'end', name : 'End', },
+                      { value : 'space-between', name : 'Space Between', },
+                      { value : 'space-around', name : 'Space Around', },
+                      { value : 'space-evenly', name : 'Space Evenly', }],
+        },{
+            name      : '', /* Meant to look connected to the one above */
+            property  : 'align-items', /* Should switch to justify-content for a column parent */
+            type      : 'radio',
+            list:   [ { value : 'start', name : 'Top', }, /* icon */
+                      { value : 'center', name : 'Middle', }, /* icon */
+                      { value : 'end', name : 'Bottom', }, /* icon */
+                      { value : 'stretch', name : 'Stretch', }], /* icon */
+        },{
+            name      : 'Gap',
+            property  : 'gap',
+            type      : 'composite',
+            properties:[{
+                  name      : 'X',
+                  property  : 'gap-x',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : '0',
+              },{
+                  name      : 'Y',
+                  property  : 'gap-y',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : '0',
+        },{
+            name      : 'Overflow',
+            property  : 'overflow',
+            type      : 'select',
+            list:   [ { value : 'hidden', name : 'Hidden', },
+                      { value : 'visible', name : 'Visible', },
+                      { value : 'scroll hidden', name : 'Scroll X', },
+                      { value : 'hidden scroll', name : 'Scroll Y', },
+                      { value : 'scroll', name : 'Scroll X/Y', },
+                      { value : 'scroll hidden', name : 'Snap Scroll X', },
+                      { value : 'hidden scroll', name : 'Snap Scroll Y', },
+                      { value : 'scroll', name : 'Snap Scroll X/Y', }],
+        },{
+            name      : 'Scrollbar', /* Should only appear if a scroll option is selected above */
+            property  : '-webkit-scrollbar',
+            type      : 'select',
+            list:   [ { value : 'hidden', name : 'Hidden', },
+                      { value : 'visible', name : 'Visible', }],
+        },{
+            name      : 'Snap Scroll', /* Should only appear if a snap scroll option is selected in Overflow */
+            property  : 'snap-scroll',
+            type      : 'select',
+            list:   [ { value : 'proximity', name : 'Proximity', },
+                      { value : 'mandatory', name : 'Mandatory', }],
+        },{
+            name      : 'Scroll Padding', /* Should only appear if a snap scroll option is selected in Overflow */
+            property  : 'scroll-padding',
+            type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : '0',
+        },{
+            name      : '', /* Requires a new trait component that allows switching between all sides vs. unique paddings */
+            property  : 'scroll-padding',
+            type      : 'composite', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+            properties: [{
+                  name      : 'T',
+                  property  : 'scroll-padding-top',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'R',
+                  property  : 'scroll-padding-right',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'B',
+                  property  : 'scroll-padding-bottom',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'L',
+                  property  : 'scroll-padding-left',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },],
+        }
+      ]
+    },{
+      name: 'Image',
+      open: false,
+      properties:[
+        {
+            name      : 'Fit',
+            property  : 'object-fit',
+            type      : 'select',
+            list:    [{ value : 'cover', name : 'Cover', },
+                      { value : 'contain', name : 'Contain', },
+                      { value : 'none', name : 'Actual', },
+                      { value : 'scale-down', name : 'Contain Until Actual', }],
+            defaults  : 'cover';
+        },{
+            name      : 'Alignment',
+            property  : 'object-position',
+            type      : 'select',
+            list:    [{ value : 'center', name : 'Center', },
+                      { value : 'top', name : 'Top', },
+                      { value : 'bottom', name : 'Bottom', },
+                      { value : 'left center', name : 'Left', },
+                      { value : 'right center', name : 'Right', },
+                      { value : 'left top', name : 'Top Left', },  
+                      { value : 'right top', name : 'Top Right', },
+                      { value : 'left bottom', name : 'Bottom Left', },
+                      { value : 'right bottom', name : 'Bottom Right', }],
+            defaults  : 'center';
+        }
+      ]
+      name: 'Text', /* These settings and all others not yet addded may be in the CKEditor bubble menu instead, TBC. Text-align should use start and end rather than left and right, for language direction support. */
+      open: false,
+      properties:[
+        {
+            name      : 'Type', /* Requires non-CSS wiring */
+            property  : '',
+            type      : 'select',
+            list:   [ { value : '', name : '', }], /* Inject Type tokens from theme.css */
+        },{
+            name      : 'Font',
+            property  : 'font-family',
+            type      : 'select',
+            list:   [ { value : '', name : '', }], /* Inject system-ui and Google Fonts */
+        },{
+            name      : 'Font Style',
+            property  : 'font-weight',
+            type      : 'select',
+            list:   [ { value : '', name : '', }], /* Inject system-ui and Google Fonts */
+        },{
+            name      : 'Colour', 
+            property  : 'color', /* Needs to support text colour gradients with alternative properties */
+            type      : 'color',
+        },{
+            name      : 'Size',
+            property  : 'font-size',
+            type      : 'integer',
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : '0',
+        },{
+
+
+
+
+        }
+      ]
+      name: 'Style',
+      open: false,
+      properties:[
+        {
+            name      : 'Icon Colour',
+            property  : 'fill',
+            type      : 'color',
+        },{
+            name      : 'Background',
+            property  : 'background',
+            type      : 'stack',
+            properties: [{
+                  name      : 'Colour', /* Need to support gradients like in demo */
+                  property  : 'background',
+                  type      : 'color',
+              },{
+                  name      : 'Image',
+                  property  : 'background',
+                  type      : 'composite',
+                  properties: [{
+                        name      : 'Fit',
+                        property  : 'background-size',
+                        type      : 'select',
+                        list:    [{ value : 'cover', name : 'Cover', },
+                                  { value : 'contain', name : 'Contain', },
+                                  { value : 'none', name : 'Actual', },
+                                  { value : 'scale-down', name : 'Contain Until Actual', }],
+                  },{
+                        name      : 'Alignment', /* Need to get both axes in here */
+                        property  : 'background-position',
+                        type      : 'select',
+                        list:     [{ value : 'center', name : 'Center', },
+                                  { value : 'top', name : 'Top', },
+                                  { value : 'bottom', name : 'Bottom', },
+                                  { value : 'left center', name : 'Left', },
+                                  { value : 'right center', name : 'Right', },
+                                  { value : 'left top', name : 'Top Left', },  
+                                  { value : 'right top', name : 'Top Right', },
+                                  { value : 'left bottom', name : 'Bottom Left', },
+                                  { value : 'right bottom', name : 'Bottom Right', }],
+                        defaults  : 'center';
+                  },{
+                        name      : 'Repeat',
+                        property  : 'background-repeat',
+                        type      : 'radio',
+                        list:   [ { value : 'repeat', name : 'Yes', },
+                                  { value : 'no-repeat', name : 'No', }],
+                  },{
+                        name      : 'On Scroll',
+                        property  : 'background-attachment',
+                        type      : 'radio',
+                        list:   [ { value : 'scroll', name : 'Normal', },
+                                  { value : 'fixed', name : 'Freeze', }],
+                  },],
+              },],
+        },{
+            name      : '', /* Requires a new trait component that allows switching between all sides vs. unique paddings */
+            property  : 'border-radius',
+            type      : 'composite', /* Should be a list that injects Size tokens from theme.css */
+            units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+            min       : 0,
+            properties: [{
+                  name      : 'TL',
+                  property  : 'border-top-left-radius',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'TR',
+                  property  : 'border-top-right-radius',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'BR',
+                  property  : 'border-bottom-right-radius',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'BL',
+                  property  : 'border-bottom-left-radius',
+                  type      : 'integer',
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },],
+        },{
+            name      : 'Borders',
+            property  : 'border',
+            type      : 'composite',
+            properties: [{
+                  name      : '',
+                  property  : 'border-width',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+                  defaults  : 1,
+              },{
+                  name      : '',
+                  property  : 'border-style',
+                  type      : 'select',
+                  list:    [{ value : 'none', name : 'None', },
+                            { value : 'solid', name : 'Solid', },
+                            { value : 'dashed', name : 'Dashed', },
+                            { value : 'dotted', name : 'Dotted', },
+                            { value : 'double', name : 'Double', },
+                            { value : 'groove', name : 'Groove', },  
+                            { value : 'ridge', name : 'Ridge', },
+                            { value : 'inset', name : 'Inset', },
+                            { value : 'outset', name : 'Outset', }],
+                  defaults  : 'solid',
+              },{
+                  name      : '',
+                  property  : 'border-color',
+                  type      : 'color',
+              },],
+        },{
+            name      : 'Top Border',
+            property  : 'border-top',
+            type      : 'composite',
+            properties: [{
+                  name      : '',
+                  property  : 'border-width',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+                  defaults  : 1,
+              },{
+                  name      : '',
+                  property  : 'border-style',
+                  type      : 'select',
+                  list:    [{ value : 'none', name : 'None', },
+                            { value : 'solid', name : 'Solid', },
+                            { value : 'dashed', name : 'Dashed', },
+                            { value : 'dotted', name : 'Dotted', },
+                            { value : 'double', name : 'Double', },
+                            { value : 'groove', name : 'Groove', },  
+                            { value : 'ridge', name : 'Ridge', },
+                            { value : 'inset', name : 'Inset', },
+                            { value : 'outset', name : 'Outset', }],
+                  defaults  : 'solid',
+              },{
+                  name      : '',
+                  property  : 'border-color',
+                  type      : 'color',
+              },],
+        },{
+            name      : 'Bottom Border',
+            property  : 'border-bottom',
+            type      : 'composite',
+            properties: [{
+                  name      : '',
+                  property  : 'border-width',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+                  defaults  : 1,
+              },{
+                  name      : '',
+                  property  : 'border-style',
+                  type      : 'select',
+                  list:    [{ value : 'none', name : 'None', },
+                            { value : 'solid', name : 'Solid', },
+                            { value : 'dashed', name : 'Dashed', },
+                            { value : 'dotted', name : 'Dotted', },
+                            { value : 'double', name : 'Double', },
+                            { value : 'groove', name : 'Groove', },  
+                            { value : 'ridge', name : 'Ridge', },
+                            { value : 'inset', name : 'Inset', },
+                            { value : 'outset', name : 'Outset', }],
+                  defaults  : 'solid',
+              },{
+                  name      : '',
+                  property  : 'border-color',
+                  type      : 'color',
+              },],
+        },{
+            name      : 'Left Border',
+            property  : 'border-left',
+            type      : 'composite',
+            properties: [{
+                  name      : '',
+                  property  : 'border-width',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+                  defaults  : 1,
+              },{
+                  name      : '',
+                  property  : 'border-style',
+                  type      : 'select',
+                  list:    [{ value : 'none', name : 'None', },
+                            { value : 'solid', name : 'Solid', },
+                            { value : 'dashed', name : 'Dashed', },
+                            { value : 'dotted', name : 'Dotted', },
+                            { value : 'double', name : 'Double', },
+                            { value : 'groove', name : 'Groove', },  
+                            { value : 'ridge', name : 'Ridge', },
+                            { value : 'inset', name : 'Inset', },
+                            { value : 'outset', name : 'Outset', }],
+                  defaults  : 'solid',
+              },{
+                  name      : '',
+                  property  : 'border-color',
+                  type      : 'color',
+              },],
+        },{
+            name      : 'Right Border',
+            property  : 'border-right',
+            type      : 'composite',
+            properties: [{
+                  name      : '',
+                  property  : 'border-width',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+                  defaults  : 1,
+              },{
+                  name      : '',
+                  property  : 'border-style',
+                  type      : 'select',
+                  list:    [{ value : 'none', name : 'None', },
+                            { value : 'solid', name : 'Solid', },
+                            { value : 'dashed', name : 'Dashed', },
+                            { value : 'dotted', name : 'Dotted', },
+                            { value : 'double', name : 'Double', },
+                            { value : 'groove', name : 'Groove', },  
+                            { value : 'ridge', name : 'Ridge', },
+                            { value : 'inset', name : 'Inset', },
+                            { value : 'outset', name : 'Outset', }],
+                  defaults  : 'solid',
+              },{
+                  name      : '',
+                  property  : 'border-color',
+                  type      : 'color',
+              },],
+        },{
+            name      : 'Outline',
+            property  : 'outline',
+            type      : 'composite',
+            properties: [{
+                  name      : '',
+                  property  : 'outline-width',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+                  defaults  : 1,
+              },{
+                  name      : '',
+                  property  : 'outline-style',
+                  type      : 'select',
+                  list:    [{ value : 'none', name : 'None', },
+                            { value : 'solid', name : 'Solid', },
+                            { value : 'dashed', name : 'Dashed', },
+                            { value : 'dotted', name : 'Dotted', },
+                            { value : 'double', name : 'Double', },
+                            { value : 'groove', name : 'Groove', },  
+                            { value : 'ridge', name : 'Ridge', },
+                            { value : 'inset', name : 'Inset', },
+                            { value : 'outset', name : 'Outset', }],
+                  defaults  : 'solid',
+              },{
+                  name      : '',
+                  property  : 'outline-color',
+                  type      : 'color',
+              },], /* Still need outline offset inline or below */
+        },{
+            name      : 'Shadow',
+            property  : 'box-shadow',
+            type      : 'stack',
+            properties: [{
+                  name      : 'X',
+                  property  : 'offset-x',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'Y',
+                  property  : 'offset-y',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'Blur',
+                  property  : 'blur-radius',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'Spread',
+                  property  : 'spread-radius',
+                  type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  min       : 0,
+              },{
+                  name      : 'Colour',
+                  property  : 'color',
+                  type      : 'color', /* Should be a list that injects Colour tokens from theme.css */
+              },{
+                  name      : 'Direction',
+                  property  : 'inset',
+                  type      : 'radio',
+                  list:    [{ value : 'inset', name : 'Inside', },
+                            { value : '', name : 'Outside', }],
+                  defaults  : '',
+              },],
+        },{
+            name      : 'Clip',
+            property  : 'clip-path',
+            type      : 'select',
+            list:    [{ value : 'none', name : 'None', },
+                      { value : 'circle(50% at 50% 50%)', name : 'Circle', },
+                      { value : 'polygon(50% 0%, 0% 100%, 100% 100%);', name : 'Triangle', },
+                      { value : 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);', name : 'Diamond', },
+                      { value : 'polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);', name : 'Parallelogram', },
+                      { value : 'polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);', name : 'Pentagon', },
+                      { value : 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)', name : 'Hexagon', },
+                      { value : 'polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%)', name : 'Heptagon', },
+                      { value : 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)', name : 'Octagon', },
+                      { value : 'polygon(50% 0%, 83% 12%, 100% 43%, 94% 78%, 68% 100%, 32% 100%, 6% 78%, 0% 43%, 17% 12%)', name : 'Nonagon', },
+                      { value : 'polygon(50% 0%, 80% 10%, 100% 35%, 100% 70%, 80% 90%, 50% 100%, 20% 90%, 0% 70%, 0% 35%, 20% 10%)', name : 'Decagon', },
+                      { value : 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)', name : 'Bevel', },
+                      { value : 'polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%)', name : 'Rabbet', },
+                      { value : 'polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%)', name : 'Left Arrow', },
+                      { value : 'polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%)', name : 'Right Arrow', },
+                      { value : 'polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%)', name : 'Left Point', },
+                      { value : 'polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%)', name : 'Right Point', },
+                      { value : 'polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)', name : 'Left Chevron', },
+                      { value : 'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)', name : 'Right Chevron', },
+                      { value : 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)', name : 'Star', }],
+
+            name      : 'Pixelate',
+            property  : 'image-rendering',
+            type      : 'radio',
+            list:   [ { value : 'pixelated', name : 'Yes', },
+                      { value : 'auto', name : 'No', }],
+            defaults  : 'auto',
+        },{
+            name      : 'Blend Mode',
+            property  : 'mix-blend-mode',
+            type      : 'select',
+            list:    [{ value : 'normal', name : 'Normal', },
+                      { value : 'multiply', name : 'Multiply', },
+                      { value : 'screen', name : 'Screen', },
+                      { value : 'overlay', name : 'Overlay', },
+                      { value : 'darken', name : 'Darken', },
+                      { value : 'lighten', name : 'Lighten', },
+                      { value : 'color-dodge', name : 'Colour Dodge', },
+                      { value : 'color-burn', name : 'Colour Burn', },
+                      { value : 'hard-light', name : 'Hard Light', },
+                      { value : 'soft-light', name : 'Soft Light', },
+                      { value : 'difference', name : 'Difference', },
+                      { value : 'exclusion', name : 'Exclusion', },
+                      { value : 'hue', name : 'Hue', },
+                      { value : 'saturation', name : 'Saturation', },
+                      { value : 'color', name : 'Colour', },
+                      { value : 'luminosity', name : 'Luminosity', }],
+        },{
+            name      : 'Filter',
+            property  : 'filter',
+            type      : 'stack',
+            properties: [{
+                  name      : 'Effect',
+                  property  : 'filter',
+                  list     [{ value : '', name : 'None', },
+                            { value : 'sepia(0.5) hue-rotate(-30deg) saturate(1.2) contrast(0.8)', name : '1977', },
+                            { value : 'hue-rotate(-10deg) contrast(0.9) brightness(1.1) saturate(1.5)', name : 'Amaro', },
+                            { value : 'sepia(0.5) contrast(1.4)', name : 'Brannan', },
+                            { value : 'sepia(0.4) saturate(1.6) contrast(1.1) brightness(0.9) hue-rotate(-10deg)', name : 'Earlybird', },
+                            { value : 'contrast(1.3) sepia(0.3) saturate(1.3) hue-rotate(-10deg) brightness(0.95)', name : 'Hefe', },
+                            { value : 'contrast(1.2) brightness(0.9) hue-rotate(-10deg)', name : 'Hudson', },
+                            { value : 'grayscale(1) brightness(1.2) contrast(1.05)', name : 'Inkwell', },
+                            { value : 'sepia(0.4) saturate(2.4) brightness(1.3) contrast(1)', name : 'Kelvin', },
+                            { value : 'contrast(1.4) brightness(0.9) sepia(0.05)', name : 'Lofi', },
+                            { value : 'saturate(1.4) contrast(1.1)', name : 'Mayfair', },
+                            { value : 'sepia(0.4) saturate(1.5) contrast(0.9) brightness(1.1) hue-rotate(-15deg)', name : 'Nashville', },
+                            { value : 'saturate(1.4) sepia(0.25) hue-rotate(-15deg) contrast(0.8) brightness(1.1)', name : 'Rise', },
+                            { value : 'contrast(0.8) saturate(1.2) sepia(0.15)', name : 'Sierra', },
+                            { value : 'brightness(0.75) contrast(1.3) sepia(0.5) hue-rotate(-25deg)', name : 'Sutro', },
+                            { value : 'sepia(0.4) saturate(2.5) hue-rotate(-30deg) contrast(0.67)', name : 'Toaster', },
+                            { value : 'sepia(0.15) saturate(1.5) contrast(0.9)', name : 'Valencia', },
+                            { value : 'sepia(0.35) contrast(0.9) brightness(1.1) hue-rotate(-10deg) saturate(1.5)', name : 'Walden', },
+                            { value : 'saturate(0.02) contrast(0.85) brightness(1.2) sepia(0.02)', name : 'Willow', },                           
+                            { value : 'contrast(1.3) brightness(0.8) sepia(0.3) saturate(1.5) hue-rotate(-20deg)', name : 'X-Pro 2', }],
+              },{
+                  name      : 'Blur',
+                  property  : 'blur',
+                  type      : 'integer',
+                  units     : ['px'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Brightness',
+                  property  : 'brightness',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Contrast',
+                  property  : 'contrast',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Drop Shadow',
+                  property  : 'drop-shadow',
+                  type      : 'composite',
+                  properties: [{
+                        name      : 'X',
+                        property  : 'offset-x',
+                        type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                        units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                        min       : 0,
+                    },{
+                        name      : 'Y',
+                        property  : 'offset-y',
+                        type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                        units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                        min       : 0,
+                    },{
+                        name      : 'Blur',
+                        property  : 'blur-radius',
+                        type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                        units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                        min       : 0,
+                    },{
+                        name      : 'Spread',
+                        property  : 'spread-radius',
+                        type      : 'integer', /* Should be a list that injects Size tokens from theme.css */
+                        units     : ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                        min       : 0,
+                    },{
+                        name      : 'Colour',
+                        property  : 'color',
+                        type      : 'color', /* Should be a list that injects Colour tokens from theme.css */
+                    },{
+                        name      : 'Direction',
+                        property  : 'inset',
+                        type      : 'radio',
+                        list:    [{ value : 'inset', name : 'Inside', },
+                                  { value : '', name : 'Outside', }],
+                        defaults  : '',
+                    },],
+              },{
+                  name      : 'Grayscale',
+                  property  : 'grayscale',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Hue Rotate',
+                  property  : 'hue-rotate',
+                  type      : 'integer',
+                  units     : ['deg'],
+                  min       : 0,
+              },{
+                  name      : 'Invert',
+                  property  : 'invert',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Opacity',
+                  property  : 'opacity',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Saturate',
+                  property  : 'saturate',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+              },{
+                  name      : 'Sepia',
+                  property  : 'sepia',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },],
+        },{
+            name      : 'Backdrop',
+            property  : 'backdrop-filter',
+            type      : 'stack',
+            properties: [{
+                  name      : 'Effect',
+                  property  : 'backdrop-filter',
+                  list     [{ value : '', name : 'None', },
+                            { value : 'blur(10px)', name : 'Glassmorphism', }],
+              },{
+                  name      : 'Blur',
+                  property  : 'blur',
+                  type      : 'integer',
+                  units     : ['px'],
+                  min       : 0,
+              },{
+                  name      : 'Brightness',
+                  property  : 'brightness',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+              },{
+                  name      : 'Contrast',
+                  property  : 'contrast',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+              },{
+                  name      : 'Grayscale',
+                  property  : 'grayscale',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+              },{
+                  name      : 'Hue Rotate',
+                  property  : 'hue-rotate',
+                  type      : 'integer',
+                  units     : ['deg'],
+                  min       : 0,
+              },{
+                  name      : 'Invert',
+                  property  : 'invert',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Opacity',
+                  property  : 'opacity',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },{
+                  name      : 'Saturate',
+                  property  : 'saturate',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+              },{
+                  name      : 'Sepia',
+                  property  : 'sepia',
+                  type      : 'integer',
+                  units     : ['%'],
+                  min       : 0,
+                  max       : 100,
+              },],
+        },{
+            name      : 'Opacity',
+            property  : 'opacity',
+            type      : 'integer',
+            units     : ['%'],
+            min       : '0',
+            max       : '100',
+            defaults  : '100',
+        },{
+            name      : 'Cursor',
+            property  : 'cursor',
+            type      : 'select', /* More cursor options to be added later when blocks supports interactions like moving, resizing, and zooming */
+            list:    [{ value : 'auto', name : 'Auto', },
+                      { value : 'default', name : 'Default', }],
+                      { value : 'pointer', name : 'Pointer', }],
+                      { value : 'text', name : 'Text', }],
+                      { value : 'help', name : 'Help', }],
+        }
+      ]
+      name: 'Motion',
+      open: false,
+      properties:[
+        {
+            name      : 'Transitions', /* Ideally this is moved to an Interactions menu */
+            property  : 'transition',
+            type      : 'stack',
+            properties: [{
+                  name    : 'For',
+                  property: 'transition-property',
+                  type    : 'select',
+                  list   [{ value : '', name : '', },
+                          { value : '', name : '', },
+                          { value : '', name : '', },
+                          { value : '', name : '', },
+                          { value : '', name : '', },
+                          { value : '', name : '', }],
+              },{
+                  name    : 'Time',
+                  property: 'transition-duration',
+                  type    : 'integer', /* Should be a time tokens list from theme.css */
+                  units   : ['s'],
+                  min     : '0',
+              },{
+                  name    : 'Delay',
+                  property: 'transition-delay',
+                  type    : 'integer', /* Should be a time tokens list from theme.css */
+                  units   : ['s'],
+                  min     : '0',
+              },{
+                  name    : 'Speed',
+                  property: 'transition-timing-function',
+                  type    : 'select',
+                  list   [{ value : 'linear', name : 'linear', },
+                          { value : 'ease', name : 'ease', },
+                          { value : 'ease-in', name : 'ease-in', },
+                          { value : 'ease-out', name : 'ease-out', },
+                          { value : 'ease-in-out', name : 'ease-in-out', }],
+            },],
+        },{
+            name      : 'Animation',
+            property  : 'animation',
+            type      : 'stack',
+            properties: [{
+                name    : 'Animation',
+                  property: 'name',
+                  type    : 'select',
+                  list   [{ value : 'scale-up-center', name : 'Scale Up Center', },
+                          { value : '', name : '', }, /* There are over 800 animations*/
+                          { value : '', name : '', },
+                          { value : '', name : '', },
+                          { value : '', name : '', },
+                          { value : '', name : '', }],
+              },{
+                  name    : 'Time',
+                  property: 'transition-duration',
+                  type    : 'integer', /* Should be a time tokens list from theme.css */
+                  units   : ['s'],
+                  min     : '0',
+              },{
+                  name    : 'Delay',
+                  property: 'transition-delay',
+                  type    : 'integer', /* Should be a time tokens list from theme.css */
+                  units   : ['s'],
+                  min     : '0',
+              },{
+                  name    : 'Play On',
+                  property: 'animation-iteration-count',
+                  type    : 'select',
+                  list   [{ value : '1', name : 'Page Load', },
+                          { value : 'infinite', name : 'Loop', },
+                          { value : '', name : 'First View', },
+                          { value : '', name : 'Any View', },
+                          { value : '', name : 'Loop', },
+                          { value : '', name : 'Loop', }],
+              },{
+                  name    : 'Timeline',
+                  property: 'animation-timeline',
+                  type    : 'select',
+                  list   [{ value : 'auto', name : 'Timed', },
+                          { value : 'scroll(root block)', name : 'Page Scroll', },
+                          { value : 'scroll(nearest)', name : 'Nearest Parent Scroll', },
+                          { value : 'scroll(self)', name : 'Self Scroll', }],
+            },],
+        }
+      ]
+    }
+  ]
+}

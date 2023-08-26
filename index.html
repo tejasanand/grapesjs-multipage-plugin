@@ -143,11 +143,14 @@
         // pluginsOpts: {
         //   "customRTE": {},
         // },
-
         richTextEditor: {
 
         },
         blockManager: {
+
+        },
+        styleManager: {
+
 
         },
         plugins: ["grapesjs-preset-webpage"],
@@ -161,6 +164,31 @@
         storageManager: false,
         container: "#gjs",
         fromElement: true,
+        styleManager: {
+          sectors: [
+            {
+              name: 'Layout',
+              open: false,
+              properties: [
+                {
+                  name: 'Width',
+                  property: 'width',
+                  type: 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units: ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  defaults: 'fit-content',
+                  min: 0,
+                }, {
+                  name: 'Height',
+                  property: 'height',
+                  type: 'integer', /* Should be a list that injects Size tokens from theme.css */
+                  units: ['px', '%', 'rem', 'em', 'vw', 'vh'],
+                  defaults: 'fit-content',
+                  min: 0,
+                },
+              ]
+            },
+          ]
+        },
         pageManager: {
           pages: [
             {
@@ -176,6 +204,23 @@
           ],
         },
       });
+
+      // const styleManager = editor.StyleManager;
+      // const sector = styleManager.addSector('mySector', {
+      //   name: 'mySector',
+      //   open: true,
+      //   properties: [{ name: 'My property' }],
+
+      //   type: 'integer',
+      //   units: ['px', '%', 'rem', 'em', 'vw', 'vh'],
+      //   defaults: 'fit-content',
+      //   min: 0,
+
+      // }, { at: 0 });
+
+
+
+
       //To edit the popup bubble when we select stuff in the canvas
 
       // editor.on('rte:enable', () => {
@@ -192,7 +237,7 @@
 
       //adding functionality for adding new blocks
 
-      const blockManager = editor.Blocks;
+      // const blockManager = editor.Blocks;
 
       // blockManager.add('h1-block', {
       //   label: 'Heading',
