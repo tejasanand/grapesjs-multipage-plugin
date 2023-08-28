@@ -64,6 +64,31 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
         }
       }
 
+      const nameButton = document.createElement("button");
+      nameButton.innerHTML = "Rename Page";
+      nameButton.setAttribute("id", "pages_name");
+      pagesList.appendChild(nameButton);
+
+      nameButton.addEventListener("click", changeName);
+
+      function changeName() {
+        const selectedPage = pageManager.getSelected();
+        if (selectedPage) {
+          const newName = prompt("Please edit the current name for this page");
+
+          if (
+            newName !== "" &&
+            newName !== null &&
+            typeof newName == "string"
+          ) {
+            selectedPage.setName(newName);
+            console.log(selectedPage.getName());
+            selectedPage.id = `${newName}`;
+            console.log(selectedPage.getId());
+          }
+        }
+      }
+
       const button = document.createElement("button");
       button.innerHTML = "Add Page";
       button.setAttribute("id", "pages_add");
@@ -91,6 +116,8 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
         }
       }
       const pageManager = editor.Pages;
+
+      //API call to get all the pages
       const pages = pageManager.getAll();
 
       pagesList.setAttribute("id", "pages-list");
@@ -127,6 +154,11 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
           }
         }
       }
+
+      //Get Home Page
+
+      //API call to get all the pages
+      //xxxxxxx ///xxxxxx
 
       const lm = editor.LayerManager;
       const pn = editor.Panels;

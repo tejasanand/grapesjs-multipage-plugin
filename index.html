@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <title>GrapesJS Preset Webpage</title>
-  <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="//unpkg.com/grapesjs/dist/css/grapes.min.css">
   <script src="https://unpkg.com/grapesjs"></script>
 
   <style>
@@ -192,12 +192,12 @@
         pageManager: {
           pages: [
             {
-              id: `Home`,
+              id: 'Home',
               styles: ".my-page1-el { color: red }",
               component: '<div class="my-page1-el">Add Content</div>',
             },
             {
-              id: `About`,
+              id: 'About',
               styles: ".my-page2-el{color:blue}",
               component: '<div class="my-page2-el">Add Content</div>',
             },
@@ -263,31 +263,100 @@
       // });
 
       const pageManager = editor.Pages;
+
+      //For getting Page Data
+
+      // thisPage = pageManager.getSelected();
+
+      // const rootComponent = thisPage.getMainComponent();
+      // console.log(rootComponent.toHTML());
+      // const mainFrame = thisPage.getMainFrame();
+      // console.log(mainFrame);
+      // const arrayOfFrames = page.getAllFrames();
+
+
+
+  // function setHomePage(pageId) {
+  //   const pages = [...pageManager.pages]; // Convert to an array
+
+  //   const pageIndex = pages.findIndex((page) => page.id === pageId);
+
+  //   if (pageIndex !== -1) {
+  //   // Move the selected page to the beginning of the array (index 0)
+  //     pages.splice(0, 0, pages.splice(pageIndex, 1)[0]);
+
+  //   // Update pageManager with the modified array
+  //     pageManager.pages = pages;
+  //     // console.log(pages)
+  //     // console.log(pageManager.getMain())
+  // }
+  // }
+  // setHomePage("About");
+
+// Usage: Set "Home" as the home page
+
       const panelManager = editor.Panels;
 
-      const pages = pageManager.getAll(); //gets pages made
+
+      // GETS ALL PAGES MADE
+      const pages = pageManager.getAll();
+
+      //GETS MAIN PAGE(HOME PAGE)
+
+      const mainPage = pageManager.getMain();
+
+      
+      const initialPage = editor.Pages.getSelected();
+      updateTitle(initialPage);
+
+
+      editor.on('page:select', (selectedPage) => {
+        selectedPage=pageManager.getSelected();
+        updateTitle(selectedPage);
+        
+});
+
+      function updateTitle(selectedPage) {
+        if (selectedPage) {
+          selectedPage = pageManager.getSelected();
+          const pageTitle = selectedPage.getId();
+          console.log(pageTitle)
+           // Assuming getName() gets the page name
+          document.title = `${pageTitle} - User's Project Name`; // Set the new title
+        } else {
+    // Handle the case when no page is selected, e.g., set a default title
+            document.title = 'GrapesJS Plugin';
+  }
+}
+
+
+
+
+
       const pagesList = document.getElementById("pages-list");
+
 
       const AddPagesButton = document.getElementById("pages_add");
 
-      if (AddPagesButton) {
-        AddPagesButton.addEventListener("click", addPageFunc);
-      }
+      // if (AddPagesButton) {
+      //   AddPagesButton.addEventListener("click", addPageFunc);
+      // }
 
-      function addPageFunc() {
-        const pageName = prompt("Please enter the desired name for the page");
-        if (pageName !== "" && pageName !== null) {
-          const newPage = pageManager.add({ id: `${pageName}` });
-          const newPageText = newPage.getId();
-          const newPageItem = document.createElement("li");
-          const onClick = () => pageManager.select(newPageText);
-          newPageItem.addEventListener("click", onClick);
-          newPageItem.innerHTML = newPageText;
-          pagesList.appendChild(newPageItem);
-          pageManager.select(newPageText);
-        } else {
-        }
-      }
+      // function addPageFunc() {
+      //   const pageName = prompt("Please enter the desired name for the page");
+      //   if (pageName !== "" && pageName !== null) {
+      //     const newPage = pageManager.add({ id: `${pageName}` });
+      //     const newPageText = newPage.getId();
+      //     const newPageItem = document.createElement("li");
+      //     const onClick = () => pageManager.select(newPageText);
+      //     newPageItem.addEventListener("click", onClick);
+      //     newPageItem.innerHTML = newPageText;
+      //     pagesList.appendChild(newPageItem);
+      //     pageManager.select(newPageText);
+      //   } else {
+      //   }
+      // }
+      
 
       //when someone clicks the button we want to add a page there
     };
