@@ -40,29 +40,49 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
     run(editor) {
       const pagesList = document.createElement("li");
 
-      const duplicate_button = document.createElement("button");
-      duplicate_button.innerHTML = "Duplicate Page";
-      duplicate_button.setAttribute("id", "pages_duplicate");
-      duplicate_button.style.marginTop = "10px";
-      pagesList.appendChild(duplicate_button);
+      const setTitle = document.createElement("button");
+      setTitle.innerHTML = "Set Title";
+      setTitle.setAttribute("id", "title_id");
+      setTitle.style.marginTop = "10px";
+      pagesList.appendChild(setTitle);
 
-      duplicate_button.addEventListener("click", duplicatepage);
+      setTitle.addEventListener("click", setTitlefunc);
 
-      function duplicatepage() {
-        const dupPage = pageManager.getSelected();
-        if (dupPage) {
-          const dupPageText = dupPage.getId();
-
-          const duplicatedItem = document.createElement("li");
-          if (typeof dupPageText !== "string") return;
-          const onClick = () => pageManager.select(dupPageText);
-          duplicatedItem.addEventListener("click", onClick);
-          duplicatedItem.innerHTML = dupPageText;
-          pagesList.appendChild(duplicatedItem);
-          pageManager.select(dupPageText);
-        } else {
+      function setTitlefunc(selectedPage: any) {
+        const wantedTitle = prompt("Enter title you want");
+        selectedPage = pageManager.getSelected();
+        const htmlCode = `<title>${wantedTitle}</title>`;
+        if (selectedPage) {
+          // selectedPage.components.add(htmlCode);
+          const component = selectedPage.getMainComponent();
+          component.append(htmlCode);
+          // selectedPage.view.render();
         }
       }
+
+      // const duplicate_button = document.createElement("button");
+      // duplicate_button.innerHTML = "Duplicate Page";
+      // duplicate_button.setAttribute("id", "pages_duplicate");
+      // duplicate_button.style.marginTop = "10px";
+      // pagesList.appendChild(duplicate_button);
+
+      // duplicate_button.addEventListener("click", duplicatepage);
+
+      // function duplicatepage() {
+      //   const dupPage = pageManager.getSelected();
+      //   if (dupPage) {
+      //     const dupPageText = dupPage.getId();
+
+      //     const duplicatedItem = document.createElement("li");
+      //     if (typeof dupPageText !== "string") return;
+      //     const onClick = () => pageManager.select(dupPageText);
+      //     duplicatedItem.addEventListener("click", onClick);
+      //     duplicatedItem.innerHTML = dupPageText;
+      //     pagesList.appendChild(duplicatedItem);
+      //     pageManager.select(dupPageText);
+      //   } else {
+      //   }
+      // }
 
       const nameButton = document.createElement("button");
       nameButton.innerHTML = "Rename Page";
