@@ -12,7 +12,6 @@ import openImport from "./openImport";
 import { CommandObject } from "grapesjs";
 import { EditorModelParam } from "grapesjs";
 
-
 export default (editor: Editor, config: RequiredPluginOptions) => {
   const { Commands } = editor;
   const txtConfirm = config.textCleanCanvas;
@@ -21,15 +20,15 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
 
   Commands.add(cmdDeviceDesktop, {
     run: (ed) => ed.setDevice("Desktop"),
-    stop: () => { },
+    stop: () => {},
   });
   Commands.add(cmdDeviceTablet, {
     run: (ed) => ed.setDevice("Tablet"),
-    stop: () => { },
+    stop: () => {},
   });
   Commands.add(cmdDeviceMobile, {
     run: (ed) => ed.setDevice("Mobile portrait"),
-    stop: () => { },
+    stop: () => {},
   });
   Commands.add(
     cmdClear,
@@ -40,6 +39,30 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
   commands.add("open-pd", {
     run(editor) {
       const pagesList = document.createElement("li");
+
+      const duplicate_button = document.createElement("button");
+      duplicate_button.innerHTML = "Duplicate Page";
+      duplicate_button.setAttribute("id", "pages_duplicate");
+      duplicate_button.style.marginTop = "10px";
+      pagesList.appendChild(duplicate_button);
+
+      duplicate_button.addEventListener("click", duplicatepage);
+
+      function duplicatepage() {
+        const dupPage = pageManager.getSelected();
+        if (dupPage) {
+          const dupPageText = dupPage.getId();
+
+          const duplicatedItem = document.createElement("li");
+          if (typeof dupPageText !== "string") return;
+          const onClick = () => pageManager.select(dupPageText);
+          duplicatedItem.addEventListener("click", onClick);
+          duplicatedItem.innerHTML = dupPageText;
+          pagesList.appendChild(duplicatedItem);
+          pageManager.select(dupPageText);
+        } else {
+        }
+      }
 
       const button = document.createElement("button");
       button.innerHTML = "Add Page";
@@ -65,7 +88,6 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
             pageManager.select(newPageText);
           } else {
           }
-
         }
       }
       const pageManager = editor.Pages;
@@ -83,7 +105,6 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
         pagesList.appendChild(pageItem);
         //now we need to add a button which can add pages her
       });
-
 
       const lm = editor.LayerManager;
       const pn = editor.Panels;
