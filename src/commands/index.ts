@@ -103,8 +103,30 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
         pageItem.addEventListener("click", onClick);
         pageItem.innerHTML = pageText;
         pagesList.appendChild(pageItem);
+        pagesList.setAttribute("id", pageText);
         //now we need to add a button which can add pages her
       });
+
+      const removeButton = document.createElement("button");
+      removeButton.innerHTML = "Remove Page";
+      removeButton.setAttribute("id", "pages_remove");
+      removeButton.style.marginTop = "10px";
+      pagesList.appendChild(removeButton);
+      removeButton.addEventListener("click", removePagefunc);
+
+      function removePagefunc() {
+        const page = pageManager.getSelected();
+
+        if (page) {
+          const pageText = page.getId();
+          if (typeof pageText !== "string") return;
+          pageManager.remove(pageText);
+          const listItemToRemove = document.getElementById(pageText);
+          if (listItemToRemove && listItemToRemove.parentNode) {
+            listItemToRemove.parentNode.removeChild(listItemToRemove);
+          }
+        }
+      }
 
       const lm = editor.LayerManager;
       const pn = editor.Panels;
