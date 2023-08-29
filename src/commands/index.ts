@@ -38,6 +38,7 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
   const commands = editor.Commands;
   commands.add("open-pd", {
     run(editor) {
+      const pagePaths: any = {};
       const pagesList = document.createElement("li");
 
       const setTitle = document.createElement("button");
@@ -83,6 +84,22 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
       //   } else {
       //   }
       // }
+
+      //PATH
+
+      const setPathButton = document.createElement("button");
+      setPathButton.innerHTML = "Set Path";
+      setPathButton.setAttribute("id", "pages_path");
+      pagesList.appendChild(setPathButton);
+      setPathButton.addEventListener("click", setPathFunc);
+
+      function setPathFunc() {
+        const selectedPage = pageManager.getSelected();
+        if (selectedPage) {
+          const pagePath = prompt(`Enter a path for ${selectedPage.id}:`);
+          pagePaths[selectedPage.id] = pagePath;
+        }
+      }
 
       const nameButton = document.createElement("button");
       nameButton.innerHTML = "Rename Page";
@@ -131,6 +148,8 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
             newPageItem.innerHTML = newPageText;
             pagesList.appendChild(newPageItem);
             pageManager.select(newPageText);
+            const pagePath = prompt(`Enter a path for ${pageName}:`);
+            pagePaths[pageName] = pagePath;
           } else {
           }
         }
