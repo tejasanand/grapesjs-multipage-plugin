@@ -204,7 +204,6 @@
           ],
         },
       });
-
       // const styleManager = editor.StyleManager;
       // const sector = styleManager.addSector('mySector', {
       //   name: 'mySector',
@@ -306,28 +305,28 @@
       const mainPage = pageManager.getMain();
 
       
-      const initialPage = editor.Pages.getSelected();
-      updateTitle(initialPage);
+//       const initialPage = editor.Pages.getSelected();
+//       updateTitle(initialPage);
 
 
-      editor.on('page:select', (selectedPage) => {
-        selectedPage=pageManager.getSelected();
-        updateTitle(selectedPage);
+//       editor.on('page:select', (selectedPage) => {
+//         selectedPage=pageManager.getSelected();
+//         updateTitle(selectedPage);
         
-});
+// });
 
-      function updateTitle(selectedPage) {
-        if (selectedPage) {
-          selectedPage = pageManager.getSelected();
-          const pageTitle = selectedPage.getId();
-          console.log(pageTitle)
-           // Assuming getName() gets the page name
-          document.title = `${pageTitle} - User's Project`; // Set the new title
-        } else {
-    // Handle the case when no page is selected, e.g., set a default title
-            document.title = 'GrapesJS Plugin';
-  }
-}
+//       function updateTitle(selectedPage) {
+//         if (selectedPage) {
+//           selectedPage = pageManager.getSelected();
+//           const pageTitle = selectedPage.getId();
+//           console.log(pageTitle)
+//            // Assuming getName() gets the page name
+//           document.title = `${pageTitle} - User's Project`; // Set the new title
+//         } else {
+//     // Handle the case when no page is selected, e.g., set a default title
+//             document.title = 'GrapesJS Plugin';
+//   }
+// }
 
 
 

@@ -119,9 +119,8 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
             typeof newName == "string"
           ) {
             selectedPage.setName(newName);
-            console.log(selectedPage.getName());
-            selectedPage.id = `${newName}`;
-            console.log(selectedPage.getId());
+            // selectedPage.id = `${newName}`;
+            // now need to update the name on the list
           }
         }
       }
@@ -184,12 +183,14 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
         const page = pageManager.getSelected();
 
         if (page) {
-          const pageText = page.getId();
+          const pageText = page.id;
           if (typeof pageText !== "string") return;
+          // pagesList.removeChild(pageToRemove);
           pageManager.remove(pageText);
-          const listItemToRemove = document.getElementById(pageText);
-          if (listItemToRemove && listItemToRemove.parentNode) {
-            listItemToRemove.parentNode.removeChild(listItemToRemove);
+          const item = document.getElementById(pageText);
+
+          if (item) {
+            pagesList.removeChild(item);
           }
         }
       }
