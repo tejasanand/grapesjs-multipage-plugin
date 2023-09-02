@@ -24,12 +24,11 @@ export default (editor: Editor, opts: RequiredPluginOptions) => {
   const opd = "open-pd";
   const iconStyle = 'style="display: block; max-width:22px"';
 
-  document.addEventListener('keydown', e => {
+  document.addEventListener("keydown", (e) => {
     if (e.key == "i" && e.ctrlKey) {
-      editor.runCommand(cmdImport)
-
+      editor.runCommand(cmdImport);
     }
-  })
+  });
 
   config.showDevices = false;
 

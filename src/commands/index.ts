@@ -136,9 +136,11 @@ export default (editor: Editor, config: RequiredPluginOptions) => {
 
       function pageadd() {
         const pageName = prompt("Please enter the desired name for the page");
+        const arrayOfPages = pageManager.getAll();
         if (pageName !== "" && pageName !== null) {
           const newPage = pageManager.add({ id: `${pageName}` });
           if (newPage) {
+            console.log(arrayOfPages);
             const newPageText = newPage.getId();
             const newPageItem = document.createElement("li");
             if (typeof newPageText !== "string") return;
