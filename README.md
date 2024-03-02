@@ -4,7 +4,7 @@
 
 > From the v1.* we don't include other plugins in this one anymore, so if you need them, you have to include them manually in your project. If you want to replicate the editor from the demo, please check the source of the demo [here](https://github.com/GrapesJS/grapesjs/blob/gh-pages/demo.html)
 
-## Summary
+## Summary ##
 
 * Plugin name: **`grapesjs-preset-webpage`**
 * Commands:
